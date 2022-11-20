@@ -1,0 +1,1 @@
+export const calcNewNumber = (): number => Math.ceil(Math.random() * 12);

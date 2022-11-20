@@ -1,0 +1,1 @@
+export const numericRegexOneToTwelve = /^([0-9]{0,12})+$/
