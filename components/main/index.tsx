@@ -1,42 +1,24 @@
+import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import React from 'react';
-import { Button, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
-import { palette, shadowProp } from '../../constants';
-import GameScreen from '../gameScreen';
-import IntroComponent from '../intro';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { buttonProp, palette } from '../../constants';
 
 type MainProps = {
   className?: string;
   header?: React.ReactNode;
+  navigation: NavigationProp<ParamListBase>;
 };
 
-const Main: React.FC<MainProps> = ({ header }) => {
-  const [selectedNumber, setSelectedNumber] = React.useState<number | ''>(1);
-  const [startGame, setStartGame] = React.useState<boolean>(false);
-
-  const handleStartGame = (value: boolean) => {
-    setStartGame(value);
-  };
-
-  const handleSelectedNumber = (number: number | '') => {
-    setSelectedNumber(number);
-  };
-
+const Main: React.FC<MainProps> = ({ navigation }) => {
   return (
     <View style={style.root}>
-      <View style={[style.container, shadowProp]}>
-        {!startGame ? (
-          <IntroComponent
-            selectedNumber={selectedNumber}
-            handleStartGame={handleStartGame}
-            handleNumber={handleSelectedNumber}
-          />
-        ) : (
-          <GameScreen
-            number={selectedNumber as number}
-            handleStartGame={handleStartGame}
-            handleNumber={handleSelectedNumber}
-          />
-        )}
+      <View>
+        <Text style={style.title}>Welcome to simple commerce</Text>
+        <View>
+          <Pressable style={style.button} onPress={() => navigation.navigate('Catalog')}>
+            <Text style={style.buttonText}>Products list</Text>
+          </Pressable>
+        </View>
       </View>
     </View>
   );
@@ -54,9 +36,23 @@ const style = StyleSheet.create({
     margin: 20,
     marginTop: '50%',
     width: '90%',
-    backgroundColor: palette.greyScale.dark,
+    backgroundColor: palette.greyScale.main,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  title: {
+    fontSize: 24,
+    marginTop: 16,
+    marginBottom: 16,
+  },
+  button: {
+    ...buttonProp,
+    marginTop: 24,
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: '600',
+    textAlign: 'center',
   },
 });

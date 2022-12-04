@@ -1,5 +1,6 @@
+import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import React from 'react';
-import { View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import Header from '../../components/header';
 import Layout from '../../components/layout';
 import Main from '../../components/main';
@@ -7,14 +8,15 @@ import Main from '../../components/main';
 type HomePageProps = {
   className?: string;
   header?: React.ReactNode;
+  navigation: NavigationProp<ParamListBase>;
 };
 
-const HomePage: React.FC<HomePageProps> = ({ className, header }) => {
+const HomePage: React.FC<HomePageProps> = ({ navigation }) => {
   return (
     <Layout header={<Header />}>
-      <View>
-        <Main />
-      </View>
+      <SafeAreaView>
+        <Main navigation={navigation} />
+      </SafeAreaView>
     </Layout>
   );
 };

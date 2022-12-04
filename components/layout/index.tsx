@@ -21,7 +21,7 @@ export default Layout;
 
 const style = StyleSheet.create({
   header: {
-    minHeight: 70,
+    minHeight: 30,
     backgroundColor: palette.blue,
     width: '100%',
     display: 'flex',

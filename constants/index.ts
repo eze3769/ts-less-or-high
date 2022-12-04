@@ -16,3 +16,12 @@ export const shadowProp = {
     shadowOpacity: 0.2,
     shadowRadius: 3,
   };
+
+  export const buttonProp = {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 5,
+    borderColor: '#000',
+    margin: 10,
+    backgroundColor: palette.blue,
+  };
