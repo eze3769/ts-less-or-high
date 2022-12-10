@@ -1,8 +1,9 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Text, View } from 'react-native';
-import Navigation from './navigation';
-import { store } from './store';
+import { Text } from 'react-native';
 import { Provider } from 'react-redux';
+import NavigationTabs from './navigation/tabs';
+import { store } from './store';
 
 export default function App() {
   const [loaded] = useFonts({
@@ -15,8 +16,10 @@ export default function App() {
   }
 
   return (
-    <Provider store={store}>
-      <Navigation />
-    </Provider>
+    <NavigationContainer>
+      <Provider store={store}>
+        <NavigationTabs />
+      </Provider>
+    </NavigationContainer>
   );
 }

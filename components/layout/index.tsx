@@ -1,5 +1,5 @@
 import React, { Children } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { palette } from '../../constants';
 
 type LayoutProps = {
@@ -12,7 +12,7 @@ const Layout: React.FC<LayoutProps> = ({ className, header, children }) => {
   return (
     <View>
       {header ? <View style={style.header}>{header ? header : null}</View> : null}
-      <View>{children}</View>
+      <SafeAreaView>{children}</SafeAreaView>
     </View>
   );
 };
@@ -21,7 +21,7 @@ export default Layout;
 
 const style = StyleSheet.create({
   header: {
-    minHeight: 30,
+    minHeight: 45,
     backgroundColor: palette.blue,
     width: '100%',
     display: 'flex',

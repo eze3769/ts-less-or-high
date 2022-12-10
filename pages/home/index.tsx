@@ -14,9 +14,7 @@ type HomePageProps = {
 const HomePage: React.FC<HomePageProps> = ({ navigation }) => {
   return (
     <Layout header={<Header />}>
-      <SafeAreaView>
-        <Main navigation={navigation} />
-      </SafeAreaView>
+      <Main navigation={navigation} />
     </Layout>
   );
 };

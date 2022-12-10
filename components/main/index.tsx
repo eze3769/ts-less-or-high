@@ -15,7 +15,7 @@ const Main: React.FC<MainProps> = ({ navigation }) => {
       <View>
         <Text style={style.title}>Welcome to simple commerce</Text>
         <View>
-          <Pressable style={style.button} onPress={() => navigation.navigate('Catalog')}>
+          <Pressable style={style.button} onPress={() => navigation.navigate('Shop')}>
             <Text style={style.buttonText}>Products list</Text>
           </Pressable>
         </View>

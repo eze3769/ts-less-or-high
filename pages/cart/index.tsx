@@ -1,18 +1,17 @@
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import React from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
-import Header from '../../components/header';
 import Layout from '../../components/layout';
 import { buttonProp } from '../../constants';
 
-type CatalogPageProps = {
+type CartPageProps = {
   navigation: NavigationProp<ParamListBase>;
 };
 
-const CatalogPage: React.FC<CatalogPageProps> = ({ navigation }) => {
+const CartPage: React.FC<CartPageProps> = ({ navigation }) => {
   return (
     <Layout>
-      <Text>Products</Text>
+      <Text>Cart</Text>
       <Pressable style={style.button} onPress={() => navigation.navigate('Description')}>
         <Text style={style.buttonText}>Details</Text>
       </Pressable>
@@ -20,7 +19,7 @@ const CatalogPage: React.FC<CatalogPageProps> = ({ navigation }) => {
   );
 };
 
-export default CatalogPage;
+export default CartPage;
 
 const style = StyleSheet.create({
   button: {
