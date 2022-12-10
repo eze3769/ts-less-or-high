@@ -1,6 +1,6 @@
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import React from 'react';
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import Layout from '../../components/layout';
 import { buttonProp } from '../../constants';
 
@@ -11,10 +11,7 @@ type OrdersPageProps = {
 const OrdersPage: React.FC<OrdersPageProps> = ({ navigation }) => {
   return (
     <Layout>
-      <Text>Orders</Text>
-      <Pressable style={style.button} onPress={() => navigation.navigate('Description')}>
-        <Text style={style.buttonText}>Details</Text>
-      </Pressable>
+      <Text>No orders yet</Text>
     </Layout>
   );
 };
