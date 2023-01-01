@@ -1,21 +1,17 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '..'
-import { CatalogState } from './state'
+import * as actions from './action-types';
+import { catalogInitialState } from './initial-state';
+import { CatalogState } from './state';
 
-const catalogInitialState: CatalogState = {
-  items: []
+export default function catalogReducer(
+  state: CatalogState = catalogInitialState,
+  action: actions.CatalogAction
+): CatalogState {
+  switch (action.type) {
+    case actions.GET_CATALOG_SUCCESS:
+      return {
+        catalog: action.results,
+      };
+    default:
+      return state;
+  }
 }
-
-export const catalogSlice = createSlice({
-  name: 'catalog',
-  initialState: catalogInitialState,
-  reducers: {},
-})
-
-export const { } = catalogSlice.actions
-
-// Other code such as selectors can use the imported `RootState` type
-export const selectCount = (state: RootState) => state.catalog
-
-export default catalogSlice.reducer

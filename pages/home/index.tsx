@@ -1,6 +1,5 @@
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
 import React from 'react';
-import { SafeAreaView } from 'react-native';
 import Header from '../../components/header';
 import Layout from '../../components/layout';
 import Main from '../../components/main';

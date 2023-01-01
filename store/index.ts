@@ -1,9 +1,25 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { catalogSlice } from './catalog/reducer'
+import { applyMiddleware, combineReducers, createStore } from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
+import catalogReducer from './catalog/reducer';
 
-export const store = configureStore({
-  reducer: {catalog: catalogSlice.reducer},
-})
+import rootSaga from './sagas';
+import errorReducer from './ui/error.ts/reducer';
+import isLoadingReducer from './ui/loading/reducer';
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+const sagaMiddleware = createSagaMiddleware();
+
+const rootReducer = combineReducers({
+  catalog: catalogReducer,
+  isLoading: isLoadingReducer,
+  error: errorReducer,
+});
+
+export type AppState = ReturnType<typeof rootReducer>;
+
+const configureStore = () => {
+  const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+  sagaMiddleware.run(rootSaga);
+  return store;
+};
+
+export default configureStore;
